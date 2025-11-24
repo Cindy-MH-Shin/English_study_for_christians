@@ -19,9 +19,8 @@ This repository is organized into the following major categories:
 | Folder Name | Description | Status |
 | :--- | :--- | :--- |
 | `01_Biblical_Vocab` | Core vocabulary and phrases extracted directly from various Bible translations. | Work in Progress |
-| `02_Sermon_Analysis` | Key expressions and discussion points derived from English sermons and lectures. | To Be Added |
-| `03_Church_Life` | English needed for conversation related to church services, events, and community life. | To Be Added |
-
+| `02_Business_Vocab` | Essential English vocabulary and expressions used in business and professional environments. | To Be Added |
+| `03_Speech_Vocab` | Vocabulary and structures for public speaking, presentations, and general discourse. | To Be Added |
 *(Note: The actual folders you upload later will automatically appear here.)*
 
 ## 💡 How to Use (사용 방법)
