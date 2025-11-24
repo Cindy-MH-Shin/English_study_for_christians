@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교회 영어 어휘 학습 - Church English Vocabulary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px;
+            background: #f8f9fa;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .search-box {
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            padding: 20px 40px;
+            background: #f8f9fa;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 8px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .vocab-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .vocab-card.hidden {
+            display: none;
+        }
+
+        .word-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .word {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .category-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .pronunciation {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .meaning {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: "▸";
+            color: #764ba2;
+        }
+
+        .etymology, .example, .collocation {
+            color: #555;
+            line-height: 1.8;
+            padding-left: 15px;
+        }
+
+        .example {
+            font-style: italic;
+            background: #f0f4ff;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+
+        .collocation {
+            background: #fff5e6;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+
+        .stats {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .vocab-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+        }
+
+        .quiz-mode {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 40px;
+            text-align: center;
+            font-weight: bold;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📖 교회 영어 어휘 학습</h1>
+            <p>Church English Vocabulary Learning</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">찬양과 교회 안내방송으로 배우는 영어</p>
+        </header>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="showAll()">전체 보기</button>
+            <button class="btn btn-secondary" onclick="toggleMeanings()">뜻 가리기/보기</button>
+            <button class="btn btn-secondary" onclick="shuffleCards()">카드 섞기</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 단어를 검색하세요... (예: praise, thanksgiving, baptism)" onkeyup="searchWords()">
+        </div>
+
+        <div class="category-filter">
+            <button class="category-btn active" onclick="filterCategory('all')">전체</button>
+            <button class="category-btn" onclick="filterCategory('찬양')">찬양</button>
+            <button class="category-btn" onclick="filterCategory('교회')">교회</button>
+            <button class="category-btn" onclick="filterCategory('신앙')">신앙</button>
+            <button class="category-btn" onclick="filterCategory('동사')">동사</button>
+            <button class="category-btn" onclick="filterCategory('명사')">명사</button>
+        </div>
+
+        <div class="stats">
+            총 <span id="totalWords">0</span>개의 어휘 | 표시 중: <span id="visibleWords">0</span>개
+        </div>
+
+        <div class="vocab-grid" id="vocabGrid">
+            <!-- Vocabulary cards will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const vocabulary = [
+            {
+                word: "thanksgiving",
+                category: "찬양",
+                pronunciation: "땡스기빙",
+                meaning: "감사, 감사절",
+                etymology: "thanks (감사) + giving (드림)의 합성어. 14세기부터 '감사를 표하는 행위'를 의미했으며, 미국에서는 추수감사절을 가리키는 고유명사로도 사용됨.",
+                example: "We celebrate Thanksgiving with our church family. (우리는 교회 가족들과 함께 추수감사절을 축하합니다.)",
+                collocation: "Thanksgiving Day (추수감사절), Thanksgiving service (감사예배), give thanksgiving (감사를 드리다), express thanksgiving (감사를 표현하다)"
+            },
+            {
+                word: "alleluia",
+                category: "찬양",
+                pronunciation: "알렐루야",
+                meaning: "할렐루야 (하나님을 찬양하라)",
+                etymology: "히브리어 'hallelu-Yah'에서 유래. 'hallelu'는 '찬양하라', 'Yah'는 야훼(여호와)의 축약형. 구약성경 시편에서 자주 등장하는 찬양의 표현.",
+                example: "The choir sang 'Alleluia' with great joy. (성가대가 큰 기쁨으로 '할렐루야'를 불렀습니다.)",
+                collocation: "sing alleluia (할렐루야를 노래하다), shout alleluia (할렐루야를 외치다), alleluia chorus (할렐루야 합창)"
+            },
+            {
+                word: "praise",
+                category: "찬양",
+                pronunciation: "프레이즈",
+                meaning: "찬양, 찬미, 칭찬하다",
+                etymology: "라틴어 'pretium'(가치, 값)에서 유래. 고대 프랑스어 'preisier'를 거쳐 영어로 들어옴. 누군가의 가치를 높이 평가하고 인정하는 행위를 의미.",
+                example: "Let us praise the Lord with all our hearts. (우리 모두 마음을 다해 주님을 찬양합시다.)",
+                collocation: "praise God (하나님을 찬양하다), praise and worship (찬양과 예배), words of praise (찬양의 말씀), praise team (찬양팀)"
+            },
+            {
+                word: "glory",
+                category: "찬양",
+                pronunciation: "글로리",
+                meaning: "영광, 영예, 찬란함",
+                etymology: "라틴어 'gloria'에서 직접 유래. 원래 '명성, 명예'를 뜻했으나 기독교에서는 하나님의 거룩하고 찬란한 속성을 표현하는 중요한 신학적 용어로 발전.",
+                example: "Glory to God in the highest! (지극히 높은 곳에서는 하나님께 영광!)",
+                collocation: "give glory (영광을 돌리다), glory of God (하나님의 영광), for His glory (그분의 영광을 위하여), glorious presence (영광스러운 임재)"
+            },
+            {
+                word: "grace",
+                category: "신앙",
+                pronunciation: "그레이스",
+                meaning: "은혜, 은총, 우아함",
+                etymology: "라틴어 'gratia'(호의, 감사)에서 유래. 신학적으로는 '하나님의 무조건적인 사랑과 자비'를 의미하며, 인간이 받을 자격이 없지만 하나님께서 베푸시는 선물을 나타냄.",
+                example: "We gather to receive the Lord's grace. (우리는 주님의 은혜를 받기 위해 모입니다.)",
+                collocation: "by grace (은혜로), amazing grace (놀라운 은혜), grace of God (하나님의 은혜), receive grace (은혜를 받다), full of grace (은혜가 충만한)"
+            },
+            {
+                word: "redeem",
+                category: "신앙",
+                pronunciation: "리딤",
+                meaning: "구속하다, 구원하다, 되찾다",
+                etymology: "라틴어 're-'(다시) + 'emere'(사다)의 합성어 'redimere'에서 유래. 원래 '값을 치르고 되사다'는 뜻이었으나, 기독교에서는 예수님이 십자가의 대가로 인류를 죄에서 사신 것을 의미.",
+                example: "The name that redeemed me. (나를 구속하신 이름)",
+                collocation: "redeem from sin (죄에서 구속하다), the Redeemer (구속자, 구세주), redemption (구속, 구원), redeeming love (구속하시는 사랑)"
+            },
+            {
+                word: "yoke",
+                category: "신앙",
+                pronunciation: "요크",
+                meaning: "멍에, 굴레, 속박",
+                etymology: "고대 영어 'geoc'에서 유래. 원래 소나 말의 목에 메는 나무 도구를 가리켰으나, 성경에서는 '노예나 억압의 상징', '죄의 속박'을 비유적으로 표현.",
+                example: "You have removed the yoke of my suffering. (당신은 내 고통의 멍에를 벗겨주셨습니다.)",
+                collocation: "yoke of slavery (노예의 멍에), break the yoke (멍에를 부수다), remove the yoke (멍에를 벗기다), heavy yoke (무거운 멍에)"
+            },
+            {
+                word: "guide",
+                category: "동사",
+                pronunciation: "가이드",
+                meaning: "인도하다, 안내하다, 지도하다",
+                etymology: "고대 프랑스어 'guider'에서 유래하며, 게르만어의 'witan'(알다)과 관련. 길을 아는 사람이 다른 이를 이끄는 행위를 의미.",
+                example: "The Lord guides us by our side. (주님께서 우리 곁에서 인도하시니)",
+                collocation: "guide someone (누군가를 인도하다), spiritual guide (영적 지도자), guide with wisdom (지혜로 인도하다), divine guidance (신성한 인도하심)"
+            },
+            {
+                word: "kingdom",
+                category: "신앙",
+                pronunciation: "킹덤",
+                meaning: "왕국, 나라, 하나님 나라",
+                etymology: "고대 영어 'cyningdom'에서 유래. 'cyning'(왕) + 'dom'(지배, 영역). 기독교에서는 '하나님의 통치가 실현되는 영역'을 의미하는 핵심 신학 개념.",
+                example: "His holy kingdom is fulfilled. (그분의 거룩한 나라가 이루어지네)",
+                collocation: "Kingdom of God (하나님의 나라), Kingdom of Heaven (천국), seek the Kingdom (나라를 구하다), Kingdom come (나라가 임하다)"
+            },
+            {
+                word: "victory",
+                category: "신앙",
+                pronunciation: "빅토리",
+                meaning: "승리, 이김",
+                etymology: "라틴어 'victoria'에서 유래하며, 로마 신화의 승리의 여신 이름이기도 함. 'vincere'(정복하다)와 관련. 영적 전쟁에서의 승리를 의미하기도 함.",
+                example: "Always victorious in the battle. (싸움에서 늘 승리하니)",
+                collocation: "claim victory (승리를 선포하다), victory in Christ (그리스도 안에서의 승리), victory song (승전가), victorious Lord (승리의 주님)"
+            },
+            {
+                word: "shield",
+                category: "명사",
+                pronunciation: "실드",
+                meaning: "방패, 보호하다",
+                etymology: "고대 영어 'scield'에서 유래. 전쟁에서 몸을 보호하는 방패를 의미하며, 성경에서는 하나님의 보호하심을 상징하는 중요한 은유.",
+                example: "The Lord is our shield and sword. (주님은 우리의 방패와 칼이시니)",
+                collocation: "shield of faith (믿음의 방패), God as shield (방패이신 하나님), shield and protector (방패와 보호자)"
+            },
+            {
+                word: "tribulation",
+                category: "신앙",
+                pronunciation: "트리뷸레이션",
+                meaning: "환난, 고난, 시련",
+                etymology: "라틴어 'tribulare'(짓밟다, 압박하다)에서 유래. 원래 'tribulum'은 곡식을 타작하는 도구였으며, 극심한 압박과 고통을 비유적으로 표현.",
+                example: "When we face great tribulation. (큰 환난을 당할 때)",
+                collocation: "great tribulation (큰 환난), time of tribulation (환난의 시기), overcome tribulation (환난을 이겨내다), suffer tribulation (환난을 겪다)"
+            },
+            {
+                word: "mighty",
+                category: "형용사",
+                pronunciation: "마이티",
+                meaning: "강력한, 전능한, 힘센",
+                etymology: "고대 영어 'mihtig'에서 유래하며 'might'(힘)의 형용사형. 신체적 힘뿐 아니라 영적, 도덕적 능력을 포함하는 전인적 강함을 의미.",
+                example: "The Lord guides us with His mighty arm. (주님께서 강하신 팔로 인도하시니)",
+                collocation: "mighty God (전능하신 하나님), mighty power (강력한 힘), mighty arm (강한 팔), mighty works (놀라운 일들)"
+            },
+            {
+                word: "Trinity",
+                category: "신앙",
+                pronunciation: "트리니티",
+                meaning: "삼위일체 (성부, 성자, 성령)",
+                etymology: "라틴어 'trinitas'에서 유래. 'tri-'(셋) + 'unitas'(하나됨). 기독교의 핵심 교리로, 하나님이 세 위격(성부, 성자, 성령)으로 존재하시지만 본질은 하나라는 개념.",
+                example: "Praise the Holy Trinity forever. (성삼위일체를 영원히 찬양하리)",
+                collocation: "Holy Trinity (거룩하신 삼위일체), doctrine of Trinity (삼위일체 교리), Triune God (삼위일체 하나님)"
+            },
+            {
+                word: "baptism",
+                category: "교회",
+                pronunciation: "밥티즘",
+                meaning: "세례, 침례",
+                etymology: "그리스어 'baptizein'(담그다, 잠기게 하다)에서 유래. 초대 교회에서 물에 완전히 잠기는 의식으로 시작되었으며, 죄에서 씻김과 새 생명의 시작을 상징.",
+                example: "30 children received infant baptism. (30명의 아이들이 유아 세례를 받았습니다)",
+                collocation: "receive baptism (세례를 받다), baptism service (세례식), infant baptism (유아 세례), adult baptism (성인 세례), water baptism (물세례)"
+            },
+            {
+                word: "confirmation",
+                category: "교회",
+                pronunciation: "컨퍼메이션",
+                meaning: "입교, 견진성사, 확인",
+                etymology: "라틴어 'confirmare'(강하게 하다, 확고히 하다)에서 유래. 'con-'(함께) + 'firmare'(견고하게 하다). 세례받은 신자가 신앙을 공적으로 고백하고 교회의 정식 회원이 되는 의식.",
+                example: "28 people received confirmation. (28명이 입교를 받았습니다)",
+                collocation: "confirmation service (입교식), receive confirmation (입교하다), confirmation class (입교 교육)"
+            },
+            {
+                word: "donation",
+                category: "교회",
+                pronunciation: "도네이션",
+                meaning: "기부, 헌금, 기증",
+                etymology: "라틴어 'donare'(주다)에서 유래하며 'donum'(선물)과 관련. 자발적으로 무언가를 아무런 대가 없이 주는 행위를 의미.",
+                example: "We are accepting donations of winter clothing. (방한용품 기부를 받고 있습니다)",
+                collocation: "make a donation (기부하다), donation drive (기부 캠페인), accept donations (기부를 받다), charitable donation (자선 기부)"
+            },
+            {
+                word: "homeless",
+                category: "명사",
+                pronunciation: "홈리스",
+                meaning: "노숙자, 집 없는",
+                etymology: "'home'(집) + '-less'(없는)의 합성어. 20세기 중반부터 사회 문제로 대두되면서 일반화된 용어. 단순히 물리적 거처가 없음을 넘어 사회적 소외를 의미.",
+                example: "Winter clothing to be delivered to the homeless. (노숙자들에게 전달할 방한용품)",
+                collocation: "homeless people (노숙자들), homeless shelter (노숙자 쉼터), help the homeless (노숙자를 돕다), homeless population (노숙자 인구)"
+            },
+            {
+                word: "neighbor",
+                category: "명사",
+                pronunciation: "네이버",
+                meaning: "이웃, 이웃 사람",
+                etymology: "고대 영어 'neahgebur'에서 유래. 'neah'(가까운) + 'gebur'(거주자). 물리적으로 가까이 사는 사람뿐 아니라 성경적으로는 모든 인류를 의미.",
+                example: "To our neighbors in need. (어려운 이웃들에게)",
+                collocation: "love your neighbor (이웃을 사랑하다), good neighbor (좋은 이웃), neighbor in need (도움이 필요한 이웃), neighboring community (이웃 공동체)"
+            },
+            {
+                word: "blessing",
+                category: "신앙",
+                pronunciation: "블레싱",
+                meaning: "축복, 은총, 축복하다",
+                etymology: "고대 영어 'bledsian'(성스럽게 하다, 피를 뿌리다)에서 유래. 원래 이교 제사의식과 관련되었으나 기독교화되면서 '하나님의 은총을 비는 행위'로 의미가 변화.",
+                example: "Blessing Park construction is in progress. (블레싱 파크 공사가 진행 중입니다)",
+                collocation: "count your blessings (축복을 세다), blessing ceremony (축복식), be a blessing (축복이 되다), ask for blessing (축복을 구하다)"
+            },
+            {
+                word: "shuttle",
+                category: "명사",
+                pronunciation: "셔틀",
+                meaning: "셔틀버스, 왕복 운행",
+                etymology: "방직기의 북(shuttle)에서 유래. 북이 실을 양쪽으로 왕복하며 나르듯이, 두 장소를 반복해서 오가는 교통수단을 의미하게 됨.",
+                example: "Please use the shuttle from the Metro parking lot. (메트로 주차장에서 셔틀을 이용해 주세요)",
+                collocation: "shuttle bus (셔틀버스), shuttle service (셔틀 서비스), take the shuttle (셔틀을 타다), shuttle schedule (셔틀 운행 시간표)"
+            },
+            {
+                word: "worship",
+                category: "찬양",
+                pronunciation: "워십",
+                meaning: "예배, 경배, 예배드리다",
+                etymology: "고대 영어 'weorthscipe'에서 유래. 'weorth'(가치 있는) + 'scipe'(상태). 누군가의 가치를 인정하고 경의를 표하는 행위. 기독교에서는 하나님께 최고의 경배를 드리는 것.",
+                example: "Thanksgiving intergenerational worship service. (추수감사절 온세대예배)",
+                collocation: "worship service (예배), praise and worship (찬양과 예배), worship God (하나님을 경배하다), worship leader (예배 인도자)"
+            },
+            {
+                word: "offering",
+                category: "교회",
+                pronunciation: "오퍼링",
+                meaning: "헌금, 제물, 봉헌",
+                etymology: "고대 영어 'offrian'(바치다)에서 유래하며 라틴어 'offerre'(제공하다)와 관련. 하나님께 무언가를 바치는 행위를 의미하며, 구약의 제사 제도에서 유래.",
+                example: "The funds will be used for the Blessing Park construction offering. (자금은 블레싱 파크 건축 헌금에 사용됩니다)",
+                collocation: "make an offering (헌금하다), offering plate (헌금함), special offering (특별헌금), tithes and offerings (십일조와 헌금)"
+            },
+            {
+                word: "fellowship",
+                category: "교회",
+                pronunciation: "펠로우십",
+                meaning: "교제, 친교, 사귐",
+                etymology: "고대 영어 'feolaga'(동료, 동업자)에서 유래. 'fee'(재산) + 'lay'(놓다)의 합성어로, 원래 재산을 공유하는 동료를 의미했으나 기독교에서는 신앙 안에서의 영적 교제를 의미.",
+                example: "They enjoyed rich fellowship with a meal. (식사와 함께 풍성한 교제를 나눴습니다)",
+                collocation: "Christian fellowship (그리스도인의 교제), fellowship meal (친교 식사), have fellowship (교제하다), fellowship hall (친교실)"
+            },
+            {
+                word: "charity",
+                category: "교회",
+                pronunciation: "채리티",
+                meaning: "자선, 사랑, 자비",
+                etymology: "라틴어 'caritas'(사랑, 애정)에서 유래하며 그리스어 'agape'(무조건적 사랑)와 대응. 성경에서는 하나님의 사랑을 본받아 이웃을 돕는 실천적 사랑을 의미.",
+                example: "Kingdom Young Adults held a 5K charity run. (킹덤 청년부가 5K 자선 달리기를 진행했습니다)",
+                collocation: "charity work (자선 활동), charity run (자선 달리기), charity event (자선 행사), do charity (자선을 행하다)"
+            },
+            {
+                word: "participate",
+                category: "동사",
+                pronunciation: "파티시페이트",
+                meaning: "참여하다, 참가하다",
+                etymology: "라틴어 'participare'에서 유래. 'pars'(부분) + 'capere'(취하다)의 합성어로, 어떤 일의 일부분을 담당하거나 함께하는 행위를 의미.",
+                example: "Anyone can participate, including individuals and families. (개인, 가족 등 누구나 참여하실 수 있습니다)",
+                collocation: "participate in (참여하다), active participation (적극적 참여), participate fully (완전히 참여하다), participant (참가자)"
+            },
+            {
+                word: "dedication",
+                category: "신앙",
+                pronunciation: "데디케이션",
+                meaning: "헌신, 봉헌, 전념",
+                etymology: "라틴어 'dedicare'(신성하게 하다, 바치다)에서 유래. 'de-'(완전히) + 'dicare'(선언하다). 무언가를 성스러운 목적을 위해 완전히 바치는 행위.",
+                example: "Through my dedication, someone can participate more in worship. (나의 헌신으로 누군가가 예배에 더 참여할 수 있습니다)",
+                collocation: "dedication to God (하나님께 대한 헌신), show dedication (헌신을 보이다), dedication ceremony (봉헌식), total dedication (전적인 헌신)"
+            },
+            {
+                word: "sanctuary",
+                category: "교회",
+                pronunciation: "생츄어리",
+                meaning: "성전, 예배당, 성소",
+                etymology: "라틴어 'sanctuarium'에서 유래하며 'sanctus'(거룩한)와 관련. 원래 신전 내 가장 거룩한 장소를 의미했으나, 현대에는 예배 공간 전체를 가리킴.",
+                example: "We will hold the service in the main sanctuary. (제1예배실에서 예배를 드립니다)",
+                collocation: "main sanctuary (본당, 대예배실), enter the sanctuary (성전에 들어가다), sanctuary service (예배당 예배)"
+            },
+            {
+                word: "congregation",
+                category: "교회",
+                pronunciation: "콩그리게이션",
+                meaning: "회중, 교인들, 신도들",
+                etymology: "라틴어 'congregare'(함께 모으다)에서 유래. 'con-'(함께) + 'gregare'(모으다). 예배를 위해 함께 모인 신자들의 공동체를 의미.",
+                example: "We sincerely welcome all members of the congregation. (성도님들을 진심으로 환영합니다)",
+                collocation: "church congregation (교회 회중), address the congregation (회중에게 말씀하다), congregation member (교인)"
+            },
+            {
+                word: "elder",
+                category: "교회",
+                pronunciation: "엘더",
+                meaning: "장로, 어른, 연장자",
+                etymology: "고대 영어 'eldra'(더 나이 많은)에서 유래. 유대교와 초대 교회에서 나이와 경험으로 존경받는 지도자를 가리키던 용어가 교회 직분으로 정착.",
+                example: "With the service of the elders. (장로님들의 섬김으로)",
+                collocation: "church elder (교회 장로), ruling elder (치리 장로), elders' meeting (장로회의), respect the elders (장로들을 존경하다)"
+            },
+            {
+                word: "ministry",
+                category: "교회",
+                pronunciation: "미니스트리",
+                meaning: "사역, 목회, 봉사",
+                etymology: "라틴어 'ministerium'(봉사, 직무)에서 유래하며 'minister'(종, 하인)와 관련. 하나님과 사람을 섬기는 모든 활동을 포괄하는 개념.",
+                example: "Kingdom Young Adults ministry held an event. (킹덤 청년부가 행사를 열었습니다)",
+                collocation: "youth ministry (청소년 사역), ministry work (사역 활동), worship ministry (예배 사역), children's ministry (어린이 사역)"
+            }
+        ];
+
+        let currentFilter = 'all';
+        let meaningsVisible = true;
+
+        function initializeVocab() {
+            displayVocabulary(vocabulary);
+            updateStats();
+        }
+
+        function displayVocabulary(vocabList) {
+            const grid = document.getElementById('vocabGrid');
+            grid.innerHTML = '';
+
+            vocabList.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'vocab-card';
+                card.setAttribute('data-category', item.category);
+                card.setAttribute('data-word', item.word.toLowerCase());
+                
+                card.innerHTML = `
+                    <div class="word-header">
+                        <div class="word">${item.word}</div>
+                        <div class="category-tag">${item.category}</div>
+                    </div>
+                    <div class="pronunciation">🔊 ${item.pronunciation}</div>
+                    <div class="meaning" data-meaning>${item.meaning}</div>
+                    <div class="section-title">어원 (Etymology)</div>
+                    <div class="etymology">${item.etymology}</div>
+                    <div class="section-title">예문 (Example)</div>
+                    <div class="example">${item.example}</div>
+                    <div class="section-title">연어 (Collocations)</div>
+                    <div class="collocation">${item.collocation}</div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCategory(category) {
+            currentFilter = category;
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.vocab-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            updateStats();
+        }
+
+        function searchWords() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.vocab-card');
+            
+            cards.forEach(card => {
+                const word = card.getAttribute('data-word');
+                const category = card.getAttribute('data-category');
+                const text = card.textContent.toLowerCase();
+                
+                if (text.includes(searchTerm)) {
+                    if (currentFilter === 'all' || category === currentFilter) {
+                        card.classList.remove('hidden');
+                    }
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            updateStats();
+        }
+
+        function toggleMeanings() {
+            meaningsVisible = !meaningsVisible;
+            const meanings = document.querySelectorAll('[data-meaning]');
+            meanings.forEach(meaning => {
+                meaning.style.display = meaningsVisible ? 'block' : 'none';
+            });
+        }
+
+        function showAll() {
+            currentFilter = 'all';
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            buttons[0].classList.add('active');
+            
+            const cards = document.querySelectorAll('.vocab-card');
+            cards.forEach(card => card.classList.remove('hidden'));
+            
+            document.getElementById('searchInput').value = '';
+            updateStats();
+        }
+
+        function shuffleCards() {
+            const grid = document.getElementById('vocabGrid');
+            const cards = Array.from(grid.children);
+            
+            for (let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
+            
+            cards.forEach(card => grid.appendChild(card));
+        }
+
+        function updateStats() {
+            const total = vocabulary.length;
+            const visible = document.querySelectorAll('.vocab-card:not(.hidden)').length;
+            document.getElementById('totalWords').textContent = total;
+            document.getElementById('visibleWords').textContent = visible;
+        }
+
+        // Initialize on load
+        window.onload = initializeVocab;
+    </script>
+</body>
+</html>

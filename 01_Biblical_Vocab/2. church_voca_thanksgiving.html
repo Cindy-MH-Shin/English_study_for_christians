@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>추수감사절 설교 영어 어휘 학습 - Thanksgiving Sermon Vocabulary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #d4a574 0%, #8b6914 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d4a574 0%, #8b6914 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .sermon-info {
+            background: #fff8e8;
+            padding: 25px;
+            margin: 20px 40px;
+            border-radius: 15px;
+            border-left: 5px solid #d4a574;
+        }
+
+        .sermon-info h3 {
+            color: #8b6914;
+            margin-bottom: 10px;
+        }
+
+        .sermon-info p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px;
+            background: #f8f9fa;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d4a574 0%, #8b6914 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #8b6914;
+            border: 2px solid #d4a574;
+        }
+
+        .btn-secondary:hover {
+            background: #d4a574;
+            color: white;
+        }
+
+        .search-box {
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #d4a574;
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+        }
+
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            padding: 20px 40px;
+            background: #f8f9fa;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 8px 20px;
+            border: 2px solid #d4a574;
+            background: white;
+            color: #8b6914;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: #d4a574;
+            color: white;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .vocab-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #d4a574;
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .vocab-card.hidden {
+            display: none;
+        }
+
+        .word-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .word {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #8b6914;
+        }
+
+        .category-tag {
+            background: linear-gradient(135deg, #d4a574 0%, #8b6914 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .pronunciation {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .meaning {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff8e8;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-weight: bold;
+            color: #8b6914;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: "▸";
+            color: #d4a574;
+        }
+
+        .etymology, .example, .collocation {
+            color: #555;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .example {
+            background: #fff8e8;
+            border-left: 3px solid #d4a574;
+        }
+
+        .stats {
+            text-align: center;
+            padding: 20px;
+            background: #fff8e8;
+            font-size: 1.1em;
+            color: #8b6914;
+            font-weight: 600;
+        }
+
+        footer {
+            background: #2c2c2c;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+
+        .quiz-mode {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 40px;
+            text-align: center;
+            font-weight: bold;
+            color: #856404;
+            display: none;
+        }
+
+        .quiz-mode.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .vocab-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🙏 추수감사절 설교 영어 어휘 학습</h1>
+            <p>Thanksgiving Sermon English Vocabulary Learning</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">광야에서 피어나는 감사의 노래 - A Song of Thanks Blooming in the Wilderness</p>
+        </header>
+
+        <div class="sermon-info">
+            <h3>📖 본문 말씀 (Scripture)</h3>
+            <p><strong>시편 107:1-9 (Psalm 107:1-9)</strong></p>
+            <p><em>"여호와께 감사하라 그는 선하시며 그 인자하심이 영원하심이로다"</em></p>
+            <p><em>"Give thanks to the LORD, for he is good; his love endures forever."</em></p>
+            <br>
+            <h3>💡 핵심 메시지 (Key Message)</h3>
+            <p>그리스도인의 감사는 상황을 초월한 감사입니다. 하나님의 선하심과 영원한 인자하심이 우리 감사의 근본적인 이유입니다.</p>
+            <p>Christian thanksgiving transcends circumstances. God's goodness and eternal loving-kindness are the fundamental reasons for our gratitude.</p>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="toggleMeanings()">🔍 뜻 숨기기/보이기</button>
+            <button class="btn btn-secondary" onclick="shuffleCards()">🔀 카드 섞기</button>
+            <button class="btn btn-secondary" onclick="showAll()">📋 전체 보기</button>
+            <button class="btn btn-secondary" onclick="startQuizMode()">🎯 퀴즈 모드</button>
+        </div>
+
+        <div class="quiz-mode" id="quizMode">
+            🎯 퀴즈 모드 활성화! 단어의 뜻이 가려졌습니다. 카드를 클릭하여 답을 확인하세요.
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 단어 또는 뜻 검색... (Search words or meanings...)" onkeyup="searchWords()">
+        </div>
+
+        <div class="category-filter">
+            <button class="category-btn active" onclick="filterCategory('all')">전체 (All)</button>
+            <button class="category-btn" onclick="filterCategory('신앙')">신앙 (Faith)</button>
+            <button class="category-btn" onclick="filterCategory('성경')">성경 (Bible)</button>
+            <button class="category-btn" onclick="filterCategory('감정')">감정 (Emotions)</button>
+            <button class="category-btn" onclick="filterCategory('동사')">동사 (Verbs)</button>
+            <button class="category-btn" onclick="filterCategory('명사')">명사 (Nouns)</button>
+            <button class="category-btn" onclick="filterCategory('형용사')">형용사 (Adjectives)</button>
+        </div>
+
+        <div class="stats">
+            <p>📚 전체 단어: <span id="totalWords">0</span>개 | 현재 표시: <span id="visibleWords">0</span>개</p>
+        </div>
+
+        <div id="vocabGrid" class="vocab-grid"></div>
+
+        <footer>
+            <p>🙏 Church English Vocabulary Learning Materials</p>
+            <p>광야에서 피어나는 감사의 노래 - 시편 107:1-9</p>
+            <p>A Song of Thanks Blooming in the Wilderness - Psalm 107:1-9</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">© 2025 Created for Christians who long to study English</p>
+        </footer>
+    </div>
+
+    <script>
+        const vocabulary = [
+            {
+                word: "thanksgiving",
+                category: "신앙",
+                pronunciation: "땡스기빙",
+                meaning: "감사, 추수감사절",
+                etymology: "고대 영어 'þancian'(감사하다)와 'giefan'(주다)의 합성어. 받은 것에 대해 감사를 표현하고 돌려주는 행위. 미국에서는 1621년 청교도들이 첫 수확을 기념하며 시작된 국경일.",
+                example: "Thanksgiving is not just about good circumstances, but about God's unchanging nature. (감사는 좋은 상황에 대한 것이 아니라 하나님의 변함없는 성품에 대한 것입니다)",
+                collocation: "give thanks (감사하다), Thanksgiving Day (추수감사절), thanksgiving prayer (감사기도), express thanksgiving (감사를 표현하다)"
+            },
+            {
+                word: "gratitude",
+                category: "감정",
+                pronunciation: "그래티튜드",
+                meaning: "감사, 감사하는 마음",
+                etymology: "라틴어 'gratitudo'에서 유래하며 'gratus'(감사하는, 기쁜)와 관련. 받은 호의나 은혜를 인정하고 고마워하는 마음의 상태.",
+                example: "David and Paul's lives overflowed with gratitude despite their suffering. (다윗과 바울의 삶은 고난 속에서도 감사로 넘쳤습니다)",
+                collocation: "express gratitude (감사를 표현하다), deep gratitude (깊은 감사), attitude of gratitude (감사하는 태도), show gratitude (감사를 나타내다)"
+            },
+            {
+                word: "wilderness",
+                category: "성경",
+                pronunciation: "윌더니스",
+                meaning: "광야, 황무지",
+                etymology: "고대 영어 'wildēornes'에서 유래하며 'wild deer'(야생 동물)의 장소를 의미. 성경에서는 시험과 정화의 장소이자 하나님과의 만남의 장소를 상징.",
+                example: "A song of thanks blooming in the wilderness. (광야에서 피어나는 감사의 노래)",
+                collocation: "in the wilderness (광야에서), wilderness journey (광야 여정), wander in the wilderness (광야를 방황하다), wilderness experience (광야 경험)"
+            },
+            {
+                word: "psalm",
+                category: "성경",
+                pronunciation: "쌈",
+                meaning: "시편, 찬송시",
+                etymology: "그리스어 'psalmos'(현을 뜯어 연주하다)에서 유래. 히브리어 성경의 'Tehillim'(찬양)을 번역한 것으로, 악기 반주와 함께 부르는 찬양시.",
+                example: "Psalm 107 was sung when the Israelites returned from Babylonian captivity. (시편 107편은 이스라엘 백성이 바벨론 포로생활에서 돌아올 때 불렀습니다)",
+                collocation: "Book of Psalms (시편), sing a psalm (시편을 노래하다), psalm of praise (찬양 시편), psalm of thanksgiving (감사 시편)"
+            },
+            {
+                word: "goodness",
+                category: "신앙",
+                pronunciation: "구드니스",
+                meaning: "선하심, 착함, 은혜",
+                etymology: "고대 영어 'gōdnes'에서 유래. 성경의 히브리어 'tov'(토브)를 번역한 것으로, 단순한 도덕적 착함을 넘어 하나님의 아름답고 완전한 본성을 가리킴.",
+                example: "Thank the LORD for his goodness and his eternal loving-kindness. (여호와의 선하심과 영원한 인자하심을 감사하라)",
+                collocation: "God's goodness (하나님의 선하심), goodness and mercy (선하심과 긍휼), taste and see the goodness (선하심을 맛보아 알다), out of his goodness (그의 선하심으로)"
+            },
+            {
+                word: "loving-kindness",
+                category: "신앙",
+                pronunciation: "러빙-카인드니스",
+                meaning: "인자하심, 자비로운 사랑",
+                etymology: "히브리어 'hesed'(헤세드)를 영어로 번역한 합성어. 'loving'(사랑하는)과 'kindness'(친절)의 결합으로, 언약에 기반한 하나님의 변함없는 사랑과 신실함을 표현.",
+                example: "His loving-kindness endures forever. (그의 인자하심이 영원하심이로다)",
+                collocation: "steadfast loving-kindness (변함없는 인자하심), show loving-kindness (인자하심을 베풀다), trust in God's loving-kindness (하나님의 인자하심을 신뢰하다)"
+            },
+            {
+                word: "redemption",
+                category: "신앙",
+                pronunciation: "리뎀션",
+                meaning: "구속, 속량, 구원",
+                etymology: "라틴어 'redemptio'에서 유래하며 're-'(다시) + 'emere'(사다)의 합성어. 값을 치르고 노예나 포로를 해방시키는 것으로, 예수님의 희생으로 죄에서 해방됨을 의미.",
+                example: "Let the redeemed of the LORD tell their story. (여호와의 속량을 받은 자들은 이같이 말할지어다)",
+                collocation: "redemption through Christ (그리스도를 통한 구속), plan of redemption (구속의 계획), redemption price (속량의 값), seek redemption (구속을 구하다)"
+            },
+            {
+                word: "captivity",
+                category: "성경",
+                pronunciation: "캡티비티",
+                meaning: "포로, 사로잡힘, 포로생활",
+                etymology: "라틴어 'captivitas'에서 유래하며 'captus'(사로잡힌)와 관련. 자유를 빼앗기고 억류되거나 노예가 된 상태. 성경에서는 죄의 포로됨을 상징하기도 함.",
+                example: "The Israelites returned after 70 years of captivity in Babylon. (이스라엘 백성은 70년 바벨론 포로생활을 마치고 돌아왔습니다)",
+                collocation: "Babylonian captivity (바벨론 포로), in captivity (포로로), release from captivity (포로에서 해방), years of captivity (포로생활 기간)"
+            },
+            {
+                word: "wandering",
+                category: "동사",
+                pronunciation: "완더링",
+                meaning: "방황, 헤맴, 떠돌아다님",
+                etymology: "고대 영어 'wandrian'(목적 없이 돌아다니다)에서 유래. 방향을 잃고 이리저리 헤매는 것을 의미하며, 영적으로는 하나님을 떠나 방황하는 상태를 가리킴.",
+                example: "They wandered in the wilderness desert, finding no city to dwell in. (그들이 광야 사막 길에서 방황하며 거주할 성읍을 찾지 못하고)",
+                collocation: "wander in the wilderness (광야에서 방황하다), wander aimlessly (목적 없이 헤매다), wander from the path (길에서 벗어나다), wandering heart (방황하는 마음)"
+            },
+            {
+                word: "distress",
+                category: "감정",
+                pronunciation: "디스트레스",
+                meaning: "고통, 곤경, 괴로움",
+                etymology: "라틴어 'distringere'(잡아당기다, 괴롭히다)에서 유래. 'dis-'(떨어져) + 'stringere'(당기다). 극심한 불안, 고통, 또는 어려운 상황을 의미.",
+                example: "Then they cried out to the LORD in their distress. (이에 그들이 근심 중에 여호와께 부르짖으매)",
+                collocation: "in distress (곤경에 처한), cry out in distress (고통 중에 부르짖다), cause distress (고통을 주다), emotional distress (정서적 고통)"
+            },
+            {
+                word: "deliver",
+                category: "동사",
+                pronunciation: "딜리버",
+                meaning: "구하다, 건지다, 전달하다",
+                etymology: "라틴어 'deliberare'(자유롭게 하다)에서 유래. 'de-'(완전히) + 'liberare'(자유롭게 하다). 위험이나 곤경에서 구해내는 것.",
+                example: "He delivered them from their troubles. (그들의 고통에서 건지시고)",
+                collocation: "deliver from evil (악에서 구하다), deliver from danger (위험에서 구출하다), God delivers (하나님이 구원하신다), deliverance from sin (죄에서의 구원)"
+            },
+            {
+                word: "steadfast",
+                category: "형용사",
+                pronunciation: "스테드패스트",
+                meaning: "확고한, 변함없는, 충실한",
+                etymology: "고대 영어 'stedefæst'에서 유래. 'stede'(장소) + 'fæst'(고정된). 한 곳에 단단히 고정되어 움직이지 않는 것처럼 신념이나 충성이 흔들리지 않는 상태.",
+                example: "God's steadfast love never ceases. (하나님의 변함없는 사랑은 끝이 없습니다)",
+                collocation: "steadfast love (변함없는 사랑), remain steadfast (확고히 머물다), steadfast faith (확고한 믿음), steadfast devotion (변함없는 헌신)"
+            },
+            {
+                word: "rejoice",
+                category: "동사",
+                pronunciation: "리조이스",
+                meaning: "기뻐하다, 즐거워하다",
+                etymology: "라틴어 'gaudere'(기뻐하다)에서 유래한 프랑스어 'rejoiss-'를 통해 영어로 전해짐. 're-'(다시, 강조)가 붙어 크게 기뻐하는 것을 의미.",
+                example: "Let them rejoice in his steadfast love. (그들로 하여금 그의 인자하심을 기뻐하게 하소서)",
+                collocation: "rejoice in the LORD (주 안에서 기뻐하다), rejoice always (항상 기뻐하다), rejoice with thanksgiving (감사함으로 기뻐하다), reason to rejoice (기뻐할 이유)"
+            },
+            {
+                word: "transcend",
+                category: "동사",
+                pronunciation: "트랜센드",
+                meaning: "초월하다, 넘어서다",
+                etymology: "라틴어 'transcendere'에서 유래. 'trans-'(넘어) + 'scandere'(오르다). 한계나 경계를 넘어 그 이상으로 가는 것.",
+                example: "Christian thanksgiving transcends circumstances. (그리스도인의 감사는 상황을 초월합니다)",
+                collocation: "transcend boundaries (경계를 초월하다), transcend understanding (이해를 초월하다), transcend circumstances (상황을 초월하다), transcend human wisdom (인간의 지혜를 넘어서다)"
+            },
+            {
+                word: "faithful",
+                category: "형용사",
+                pronunciation: "페이쓰풀",
+                meaning: "신실한, 충실한, 믿음직한",
+                etymology: "고대 영어 'fæst'(확고한) + 접미사 '-ful'(가득한). 믿음과 충성심으로 가득 찬, 약속을 지키는 성품을 의미.",
+                example: "God remains faithful even when we are faithless. (우리가 신실하지 못해도 하나님은 여전히 신실하십니다)",
+                collocation: "faithful God (신실하신 하나님), remain faithful (신실하게 남다), faithful servant (충성된 종), faithful to the end (끝까지 신실한)"
+            },
+            {
+                word: "pursue",
+                category: "동사",
+                pronunciation: "퍼슈",
+                meaning: "추적하다, 쫓다, 추구하다",
+                etymology: "라틴어 'prosequi'에서 유래. 'pro-'(앞으로) + 'sequi'(따르다). 목표나 대상을 끈질기게 따라가는 것.",
+                example: "God pursues us like the Hound of Heaven. (하나님은 천국의 사냥개처럼 우리를 추적하십니다)",
+                collocation: "pursue relentlessly (끈질기게 추구하다), pursue with love (사랑으로 쫓다), pursue God (하나님을 추구하다), pursue righteousness (의를 추구하다)"
+            },
+            {
+                word: "satisfy",
+                category: "동사",
+                pronunciation: "새티스파이",
+                meaning: "만족시키다, 채우다",
+                etymology: "라틴어 'satisfacere'에서 유래. 'satis'(충분한) + 'facere'(만들다). 필요나 욕구를 충분히 채워 만족스러운 상태로 만드는 것.",
+                example: "He satisfies the longing soul. (그가 사모하는 영혼에게 만족을 주시며)",
+                collocation: "satisfy hunger (배고픔을 채우다), satisfy the soul (영혼을 만족시키다), fully satisfied (완전히 만족한), satisfy needs (필요를 채우다)"
+            },
+            {
+                word: "abundance",
+                category: "명사",
+                pronunciation: "어번던스",
+                meaning: "풍성함, 풍부, 넉넉함",
+                etymology: "라틴어 'abundantia'에서 유래하며 'abundare'(넘쳐흐르다)와 관련. 'ab-'(떨어져) + 'unda'(파도). 물결이 넘쳐흐르듯 풍부한 상태.",
+                example: "He fills the hungry soul with good things in abundance. (주린 영혼에게 좋은 것으로 채워주심이로다)",
+                collocation: "abundance of blessings (풍성한 축복), live in abundance (풍요롭게 살다), abundance of grace (넘치는 은혜), share abundance (풍성함을 나누다)"
+            },
+            {
+                word: "affliction",
+                category: "명사",
+                pronunciation: "어플릭션",
+                meaning: "고난, 고통, 시련",
+                etymology: "라틴어 'afflictio'에서 유래하며 'affligere'(내리치다, 괴롭히다)와 관련. 신체적, 정신적, 영적 고통을 포함하는 광범위한 개념.",
+                example: "David's life was full of afflictions, yet he gave thanks. (다윗의 삶은 고난으로 가득했지만 그는 감사했습니다)",
+                collocation: "in times of affliction (고난의 시기에), endure affliction (고난을 견디다), comfort in affliction (고난 중의 위로), through affliction (고난을 통해)"
+            },
+            {
+                word: "refuge",
+                category: "명사",
+                pronunciation: "레퓨지",
+                meaning: "피난처, 피신처, 안식처",
+                etymology: "라틴어 'refugium'에서 유래. 're-'(뒤로) + 'fugere'(도망가다). 위험에서 도망쳐 숨을 수 있는 안전한 장소.",
+                example: "God is our refuge and strength in times of trouble. (하나님은 환난 중에 우리의 피난처요 힘이십니다)",
+                collocation: "take refuge in God (하나님께 피하다), place of refuge (피난처), seek refuge (피난처를 구하다), refuge from the storm (폭풍으로부터의 피난처)"
+            },
+            {
+                word: "pilgrimage",
+                category: "명사",
+                pronunciation: "필그리미지",
+                meaning: "순례, 순례여행",
+                etymology: "라틴어 'peregrinus'(외국인, 나그네)에서 유래. 종교적 목적으로 성지를 방문하는 여행이며, 인생 전체를 영적 여정으로 보는 개념.",
+                example: "Our life is a pilgrimage toward the Promised Land. (우리 인생은 약속의 땅을 향한 순례입니다)",
+                collocation: "spiritual pilgrimage (영적 순례), life pilgrimage (인생 순례), pilgrimage journey (순례 여정), pilgrim on earth (땅에서의 나그네)"
+            },
+            {
+                word: "covenant",
+                category: "성경",
+                pronunciation: "커버넌트",
+                meaning: "언약, 계약",
+                etymology: "라틴어 'convenire'(함께 오다, 합의하다)에서 유래. 성경에서는 하나님과 사람 사이의 특별한 관계를 맺는 엄숙한 약속.",
+                example: "God's steadfast love is based on his covenant. (하나님의 변함없는 사랑은 그분의 언약에 기초합니다)",
+                collocation: "covenant relationship (언약 관계), keep the covenant (언약을 지키다), covenant promise (언약의 약속), new covenant (새 언약)"
+            },
+            {
+                word: "perseverance",
+                category: "신앙",
+                pronunciation: "퍼서비런스",
+                meaning: "인내, 끈기, 견딤",
+                etymology: "라틴어 'perseverare'에서 유래. 'per-'(통하여, 끝까지) + 'severus'(엄격한, 심각한). 어려움 속에서도 포기하지 않고 계속 나아가는 것.",
+                example: "Thank God for giving me strength to persevere without giving up. (포기하지 않고 계속 할 수 있는 힘을 주셔서 감사합니다)",
+                collocation: "persevere in faith (믿음 안에서 인내하다), persevere through trials (시련을 통해 견디다), perseverance of the saints (성도의 견인), need perseverance (인내가 필요하다)"
+            },
+            {
+                word: "providence",
+                category: "신앙",
+                pronunciation: "프라비던스",
+                meaning: "섭리, 하나님의 보살피심",
+                etymology: "라틴어 'providentia'에서 유래. 'pro-'(앞서) + 'videre'(보다). 미리 보고 돌보는 것으로, 하나님이 세상을 지혜롭게 다스리고 인도하심을 의미.",
+                example: "We trust in God's providence even in difficult times. (어려운 시기에도 우리는 하나님의 섭리를 신뢰합니다)",
+                collocation: "divine providence (신적 섭리), trust in providence (섭리를 신뢰하다), providence of God (하나님의 섭리), under God's providence (하나님의 섭리 아래)"
+            },
+            {
+                word: "sustain",
+                category: "동사",
+                pronunciation: "서스테인",
+                meaning: "지탱하다, 버티게 하다, 지속시키다",
+                etymology: "라틴어 'sustinere'에서 유래. 'sus-'(아래에서) + 'tenere'(잡다). 아래에서 떠받쳐 무너지지 않게 하는 것.",
+                example: "God sustains us through the wilderness journey. (하나님은 광야 여정을 통과하도록 우리를 지탱하십니다)",
+                collocation: "sustain life (생명을 지탱하다), sustain through trials (시련을 통과하도록 지탱하다), God sustains (하나님이 지탱하신다), sustaining grace (지탱하는 은혜)"
+            },
+            {
+                word: "testimony",
+                category: "신앙",
+                pronunciation: "테스티모니",
+                meaning: "간증, 증언",
+                etymology: "라틴어 'testimonium'에서 유래하며 'testis'(증인)와 관련. 자신이 경험하거나 목격한 것에 대해 증언하는 것. 신앙에서는 하나님의 역사하심을 나누는 것.",
+                example: "Let the redeemed give their testimony of God's work. (구원받은 자들이 하나님의 역사하심을 간증하게 하라)",
+                collocation: "share testimony (간증을 나누다), powerful testimony (강력한 간증), testimony of faith (믿음의 간증), give testimony (증언하다)"
+            },
+            {
+                word: "restoration",
+                category: "신앙",
+                pronunciation: "레스터레이션",
+                meaning: "회복, 복구, 재건",
+                etymology: "라틴어 'restaurare'에서 유래. 're-'(다시) + 'staurare'(세우다). 손상되거나 잃어버린 것을 원래 상태로 되돌리는 것.",
+                example: "The return from Babylon was a restoration of the nation. (바벨론에서의 귀환은 민족의 회복이었습니다)",
+                collocation: "restoration of hope (희망의 회복), complete restoration (완전한 회복), restoration process (회복 과정), spiritual restoration (영적 회복)"
+            },
+            {
+                word: "mercy",
+                category: "신앙",
+                pronunciation: "머시",
+                meaning: "긍휼, 자비, 용서",
+                etymology: "라틴어 'merces'(보상, 대가)에서 유래하여 프랑스어 'merci'를 거쳐 영어로 전해짐. 처벌받아 마땅한 이에게 베푸는 연민과 용서.",
+                example: "God's mercies are new every morning. (여호와의 긍휼이 아침마다 새롭습니다)",
+                collocation: "show mercy (긍휼을 베풀다), mercy of God (하나님의 자비), cry for mercy (긍휼을 구하다), rich in mercy (긍휼이 풍성한)"
+            },
+            {
+                word: "sacrifice",
+                category: "신앙",
+                pronunciation: "새크리파이스",
+                meaning: "희생, 제사, 희생하다",
+                etymology: "라틴어 'sacrificium'에서 유래. 'sacer'(거룩한) + 'facere'(만들다). 신에게 무언가를 바쳐 거룩하게 하는 행위. 예수님의 십자가 희생을 가리키기도 함.",
+                example: "God sacrificed his Son to redeem us. (하나님은 우리를 구속하시기 위해 그의 아들을 희생하셨습니다)",
+                collocation: "sacrifice of praise (찬양의 제사), ultimate sacrifice (궁극적 희생), make a sacrifice (희생하다), sacrificial love (희생적 사랑)"
+            },
+            {
+                word: "shepherd",
+                category: "성경",
+                pronunciation: "셰퍼드",
+                meaning: "목자, 양치기",
+                etymology: "고대 영어 'sceaphierde'에서 유래. 'sceap'(양) + 'hierde'(지키는 자). 양떼를 돌보고 인도하는 사람으로, 하나님이나 지도자를 상징.",
+                example: "The LORD is my shepherd; I shall not want. (여호와는 나의 목자시니 내게 부족함이 없으리로다)",
+                collocation: "good shepherd (선한 목자), shepherd the flock (양떼를 돌보다), shepherd's care (목자의 돌보심), chief shepherd (큰 목자)"
+            },
+            {
+                word: "sojourn",
+                category: "명사",
+                pronunciation: "소저언",
+                meaning: "체류, 머무름, 나그네 생활",
+                etymology: "고대 프랑스어 'sojorner'에서 유래. 'sub-'(아래) + 'diurnum'(날). 짧은 기간 동안 머무르는 것으로, 천국을 향한 나그네 인생을 의미.",
+                example: "Our life on earth is but a brief sojourn. (이 땅에서의 우리 삶은 짧은 나그네 생활입니다)",
+                collocation: "earthly sojourn (땅에서의 체류), temporary sojourn (일시적인 체류), during our sojourn (우리가 머무는 동안), sojourn in a foreign land (타국에서의 체류)"
+            }
+        ];
+
+        let currentFilter = 'all';
+        let meaningsVisible = true;
+        let quizMode = false;
+
+        function initializeVocab() {
+            displayVocabulary(vocabulary);
+            updateStats();
+        }
+
+        function displayVocabulary(vocabList) {
+            const grid = document.getElementById('vocabGrid');
+            grid.innerHTML = '';
+
+            vocabList.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'vocab-card';
+                card.setAttribute('data-category', item.category);
+                card.setAttribute('data-word', item.word.toLowerCase());
+                
+                if (quizMode) {
+                    card.style.cursor = 'pointer';
+                    card.onclick = function() {
+                        const meaning = this.querySelector('[data-meaning]');
+                        const etymology = this.querySelector('.etymology');
+                        const example = this.querySelector('.example');
+                        const collocation = this.querySelector('.collocation');
+                        const sections = this.querySelectorAll('.section-title');
+                        
+                        if (meaning.style.display === 'none' || meaning.style.display === '') {
+                            meaning.style.display = 'block';
+                            etymology.style.display = 'block';
+                            example.style.display = 'block';
+                            collocation.style.display = 'block';
+                            sections.forEach(s => s.style.display = 'flex');
+                        } else {
+                            meaning.style.display = 'none';
+                            etymology.style.display = 'none';
+                            example.style.display = 'none';
+                            collocation.style.display = 'none';
+                            sections.forEach(s => s.style.display = 'none');
+                        }
+                    };
+                }
+                
+                card.innerHTML = `
+                    <div class="word-header">
+                        <div class="word">${item.word}</div>
+                        <div class="category-tag">${item.category}</div>
+                    </div>
+                    <div class="pronunciation">🔊 ${item.pronunciation}</div>
+                    <div class="meaning" data-meaning style="display: ${quizMode ? 'none' : 'block'}">${item.meaning}</div>
+                    <div class="section-title" style="display: ${quizMode ? 'none' : 'flex'}">어원 (Etymology)</div>
+                    <div class="etymology" style="display: ${quizMode ? 'none' : 'block'}">${item.etymology}</div>
+                    <div class="section-title" style="display: ${quizMode ? 'none' : 'flex'}">예문 (Example)</div>
+                    <div class="example" style="display: ${quizMode ? 'none' : 'block'}">${item.example}</div>
+                    <div class="section-title" style="display: ${quizMode ? 'none' : 'flex'}">연어 (Collocations)</div>
+                    <div class="collocation" style="display: ${quizMode ? 'none' : 'block'}">${item.collocation}</div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCategory(category) {
+            currentFilter = category;
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.vocab-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            updateStats();
+        }
+
+        function searchWords() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.vocab-card');
+            
+            cards.forEach(card => {
+                const word = card.getAttribute('data-word');
+                const category = card.getAttribute('data-category');
+                const text = card.textContent.toLowerCase();
+                
+                if (text.includes(searchTerm)) {
+                    if (currentFilter === 'all' || category === currentFilter) {
+                        card.classList.remove('hidden');
+                    }
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            updateStats();
+        }
+
+        function toggleMeanings() {
+            meaningsVisible = !meaningsVisible;
+            const meanings = document.querySelectorAll('[data-meaning]');
+            meanings.forEach(meaning => {
+                meaning.style.display = meaningsVisible ? 'block' : 'none';
+            });
+        }
+
+        function showAll() {
+            currentFilter = 'all';
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            buttons[0].classList.add('active');
+            
+            const cards = document.querySelectorAll('.vocab-card');
+            cards.forEach(card => card.classList.remove('hidden'));
+            
+            document.getElementById('searchInput').value = '';
+            updateStats();
+        }
+
+        function shuffleCards() {
+            const grid = document.getElementById('vocabGrid');
+            const cards = Array.from(grid.children);
+            
+            for (let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
+            
+            cards.forEach(card => grid.appendChild(card));
+        }
+
+        function updateStats() {
+            const total = vocabulary.length;
+            const visible = document.querySelectorAll('.vocab-card:not(.hidden)').length;
+            document.getElementById('totalWords').textContent = total;
+            document.getElementById('visibleWords').textContent = visible;
+        }
+
+        function startQuizMode() {
+            quizMode = !quizMode;
+            const quizModeDiv = document.getElementById('quizMode');
+            
+            if (quizMode) {
+                quizModeDiv.classList.add('active');
+                meaningsVisible = false;
+            } else {
+                quizModeDiv.classList.remove('active');
+                meaningsVisible = true;
+            }
+            
+            displayVocabulary(vocabulary);
+            
+            // Reapply current filter
+            if (currentFilter !== 'all') {
+                const cards = document.querySelectorAll('.vocab-card');
+                cards.forEach(card => {
+                    if (card.getAttribute('data-category') !== currentFilter) {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+            
+            updateStats();
+        }
+
+        // Initialize on load
+        window.onload = initializeVocab;
+    </script>
+</body>
+</html>
